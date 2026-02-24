@@ -116,7 +116,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset("assets/web.jpg", height: heightDevice / 1.7),
+                Image.asset("assets/web.jpg", height: deviceWidth / 1.9),
 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,76 +210,10 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Card(
-                      elevation: 30,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.tealAccent,width: 2.0),
+                    AnimatedWidgetweb(text: "Web Development", imgPath: "assets/webL.png",fit: BoxFit.contain,reverse: true),
+                    AnimatedWidgetweb(text: "App Development", imgPath: "assets/app.png"),
+                    AnimatedWidgetweb(text: "Backend-Development", imgPath: "assets/firebase.png"),
 
-                      ),
-                      shadowColor: Colors.tealAccent,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/webL.png",
-                              height: 200,
-                              width: 200,
-                            ),
-                            sansText("Web Development", 15),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Card(
-                      elevation: 30,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.tealAccent,width: 2.0),
-
-                      ),
-                      shadowColor: Colors.tealAccent,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/app.png",
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.contain,
-                            ),
-
-                            sansText("App Development", 15),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Card(
-                      elevation: 30,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        side: BorderSide(color: Colors.tealAccent,width: 2.0),
-
-                      ),
-                      shadowColor: Colors.tealAccent,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/firebase.png",
-                              height: 200,
-                              width: 200,
-                            ),
-                            sansText("Backend-Development", 15),
-                          ],
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ],

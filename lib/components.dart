@@ -88,7 +88,6 @@ class inputField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         sansText(heading, 16.0),
         const SizedBox(height: 5),
 
@@ -110,6 +109,71 @@ class inputField extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class AnimatedWidgetweb extends StatefulWidget {
+  final imgPath;
+  final text;
+  final fit;
+  final reverse;
+  const AnimatedWidgetweb({
+    super.key,
+    required this.text,
+    required this.imgPath,
+    this.fit,
+    this.reverse,
+  });
+
+  @override
+  State<AnimatedWidgetweb> createState() => _AnimatedWidgetwebState();
+}
+
+class _AnimatedWidgetwebState extends State<AnimatedWidgetweb>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(seconds: 4),
+  )..repeat(reverse: true);
+
+  late Animation<Offset>_animation=Tween(
+    begin: widget.reverse==true ? Offset(0.0, 0.08) : Offset.zero,
+    end: widget.reverse==true ? Offset.zero : Offset(0.0, 0.08)
+  ).animate(_controller);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(position: _animation,
+    child:  Card(
+      elevation: 30,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+        side: BorderSide(color: Colors.tealAccent,width: 2.0),
+
+      ),
+      shadowColor: Colors.tealAccent,
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            Image.asset(
+              widget.imgPath,
+              height: 200,
+              width: 200,
+              fit: widget.fit ==null ?null : widget.fit,
+            ),
+            sansText(widget.text, 15),
+          ],
+        ),
+      ),
+    )
     );
   }
 }
