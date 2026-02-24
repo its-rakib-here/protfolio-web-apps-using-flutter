@@ -13,6 +13,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
+    var deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       drawer: Drawer(),
@@ -200,8 +201,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
 
           //third section
           Container(
-
-            height: heightDevice/1.3,
+            height: heightDevice / 1.3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -213,18 +213,21 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     Card(
                       elevation: 30,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0)
+                        borderRadius: BorderRadius.circular(15.0),
+                        side: BorderSide(color: Colors.tealAccent,width: 2.0),
+
                       ),
                       shadowColor: Colors.tealAccent,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Column(
                           children: [
-                            Image.asset("assets/webL.png",
-                            height: 200,
-                            width: 200,),
+                            Image.asset(
+                              "assets/webL.png",
+                              height: 200,
+                              width: 200,
+                            ),
                             sansText("Web Development", 15),
-
                           ],
                         ),
                       ),
@@ -233,17 +236,21 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     Card(
                       elevation: 30,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0)
+                        borderRadius: BorderRadius.circular(15.0),
+                        side: BorderSide(color: Colors.tealAccent,width: 2.0),
+
                       ),
                       shadowColor: Colors.tealAccent,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Column(
                           children: [
-                            Image.asset("assets/app.png",
+                            Image.asset(
+                              "assets/app.png",
                               height: 200,
                               width: 200,
-                            fit: BoxFit.contain,),
+                              fit: BoxFit.contain,
+                            ),
 
                             sansText("App Development", 15),
                           ],
@@ -254,55 +261,95 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     Card(
                       elevation: 30,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0)
+                        borderRadius: BorderRadius.circular(15.0),
+                        side: BorderSide(color: Colors.tealAccent,width: 2.0),
+
                       ),
                       shadowColor: Colors.tealAccent,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Column(
                           children: [
-                            Image.asset("assets/firebase.png",
+                            Image.asset(
+                              "assets/firebase.png",
                               height: 200,
-                              width: 200,),
+                              width: 200,
+                            ),
                             sansText("Backend-Development", 15),
-
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
-                )
-
+                ),
               ],
             ),
           ),
 
           //fourth section
           Container(
-            height:heightDevice,
+            height: heightDevice,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                sansBoldText(40, "Contact me"),
+                sansText("Contact me", 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                   children: [
                     Column(
                       children: [
-                  SizedBox(width: 350,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))
-                    ),
-                  ),)
-                      ],
-                    )
-                  ],
-                )
-              ],
+                        inputField(
+                          heading: "First Name",
+                          width: 350,
+                          hintText: "Please enter your first name",
+                        ),
+                        SizedBox(height: 15),
+                        inputField(
+                          heading: "Email ",
+                          width: 350,
+                          hintText: "Please enter your Email",
+                        ),
 
+                        // inputField(heading: "First Name", width: 350, hintText: "Please enter your first name"),
+                        // inputField(heading: "First Name", width: 350, hintText: "Please enter your first name"),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        inputField(
+                          heading: "Last Name",
+                          width: 350,
+                          hintText: "Please enter your last name",
+                        ),
+                        SizedBox(height: 15),
+                        inputField(
+                          heading: "Phone Number",
+                          width: 350,
+                          hintText: "Please enter your phone Number",
+                        ),
+                      ],
+                    ),
+
+                  ],
+                ),
+                inputField(heading: "Message", width: deviceWidth/1.5, hintText: "Please enter your message",maxline: 5,),
+              MaterialButton(
+                elevation: 20.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+
+                  ),
+                  color: Colors.tealAccent,
+                  minWidth: 200.0,
+                  height: 60.0,
+                  child: sansBoldText(20.0, "Submit"),
+                  onPressed:() {}
+              )
+              ],
             ),
-          )
+          ),
+          SizedBox(height: 20.0,),
         ],
       ),
     );

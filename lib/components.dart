@@ -69,3 +69,47 @@ class sansText extends StatelessWidget {
     return Text(text, style: GoogleFonts.openSans(fontSize: size));
   }
 }
+
+class inputField extends StatelessWidget {
+  final heading;
+  final width;
+  final hintText;
+  final maxline;
+  const inputField({
+    super.key,
+    required this.heading,
+    required this.width,
+    required this.hintText,
+    this.maxline,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        sansText(heading, 16.0),
+        const SizedBox(height: 5),
+
+        SizedBox(
+          width: width,
+          child: TextFormField(
+            maxLines: maxline,
+            decoration: InputDecoration(
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.teal),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.teal, width: 2),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
+              hintText: hintText,
+              hintStyle: GoogleFonts.poppins(fontSize: 14),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
