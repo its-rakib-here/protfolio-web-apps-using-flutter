@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:protfolio/components.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -10,13 +11,58 @@ class LandingPageWeb extends StatefulWidget {
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
+
+  urlLauncher(String url,String imgPath)
+  {
+    return
+      IconButton(
+        icon: Image.asset(
+          imgPath,
+          height: 35.0,
+        ),
+        onPressed: ()  async {
+          await launchUrl(Uri.parse(url));
+          // action here
+
+        },
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
     var deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 72.0,
+              backgroundColor: Colors.tealAccent,
+              child: CircleAvatar(
+                radius: 70,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage("assets/rakib.jpg"),
+              ),
+            ),
+            SizedBox(height: 15.0),
+            sansBoldText(20.0, "Rakibul Islam Rakib"),
+            SizedBox(height: 15.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+               urlLauncher("https://www.instagram.com/itz.__rakib/", "assets/instagram.png"),
+                urlLauncher("https://www.linkedin.com/in/rakibul-islam-rakib-885518252/", "assets/linkdin.png"),
+
+
+              ],
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
